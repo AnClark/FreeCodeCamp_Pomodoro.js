@@ -1,0 +1,35 @@
+doctype html
+
+meta(charset="utf8")
+link(href="css/pomodoro.css", rel="stylesheet")
+
+body
+    div#timer-settings
+        div#timer-settings__ses-duration
+            p.toggler-title 番茄钟时长
+            div.toggler-group
+                button#timer-settings__ses-duration__down -
+                p#timer-settings__ses-duration__state --
+                button#timer-settings__ses-duration__up +
+            div.clear
+
+        div.splitter &nbsp;
+
+
+        div#timer-settings__brk-duration
+            p.toggler-title 休息时长
+            div.toggler-group
+                button#timer-settings__brk-duration__down -
+                p#timer-settings__brk-duration__state --
+                button#timer-settings__brk-duration__up +
+
+    div.clear
+
+    div#timer-state
+        p#timer-monitor &nbsp;
+        button#timer-start-pause 开始
+
+
+    script(src="lib/jquery-3.2.1.js")
+    script(src="js/pomodoro.js")
+    script(src="js/jquery_init.js")
