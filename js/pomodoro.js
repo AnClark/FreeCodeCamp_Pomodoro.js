@@ -3,7 +3,6 @@
  * @author AnClark Liu
  * @fileOverview
  *      Pomodoro 番茄时钟的核心库。
- *
  */
 
 /**
