@@ -1,4 +1,12 @@
 /**
+ * @file Pomodoro.js
+ * @author AnClark Liu
+ * @fileOverview
+ *      Pomodoro 番茄时钟的核心库。
+ *
+ */
+
+/**
  * 当前活跃的番茄钟计时器。
  * 一次只允许一个番茄钟进程运行，因此这里的状态可以决定UI对番茄钟的操作：
  *      ■ 新番茄钟
@@ -63,18 +71,22 @@ var PomoTimer = function (ses_duration_sec, timer_monitor, brk_duration_sec) {
     let currentSec = sessionDurationSec;        // 当前剩余的秒数。初始为会话时长。
     let runningState = "pomo";                  // 指定番茄钟计时状态，包括番茄计时时间（“pomo”）和休息时间（“break”）。
     let interval;                               // 当前用 setInterval 生成的 Timeout 对象
+    let running = false;                        // 显示番茄钟是否在工作中
 
     /**
      * @method startTimer
      * 用于启动计时器。
      */
     this.startTimer = function () {
-      clearInterval(interval);          // 先停止当前计时器，防止用户私自调用此方法导致计时混乱
+        clearInterval(interval);          // 先停止当前计时器，防止用户私自调用此方法导致计时混乱
 
-      interval = setInterval(function(){
-          if(currentSec <= 0) {
 
-              switch(runningState){
+        interval = setInterval(function() {
+            // 设置停止计时时的动作
+            if(currentSec <= 0)
+            {
+                // 每轮计时结束后，在番茄会话时间和休息时间中切换
+                switch(runningState) {
                   case "pomo":
                       runningState = "break";
                       currentSec = breakDurationSec;
@@ -83,15 +95,19 @@ var PomoTimer = function (ses_duration_sec, timer_monitor, brk_duration_sec) {
                       runningState = "pomo";
                       currentSec = sessionDurationSec;
                       break;
-              }
+                }
 
+            }
 
-          }
-          currentSec--;
+            // 计时过程，持续倒数秒
+            currentSec--;
 
-          timer_monitor.text(Sec2MinuteSecStr(currentSec));
+            // 显示当前倒计时
+            timer_monitor.text(Sec2MinuteSecStr(currentSec));
 
-      }, 1000);
+        }, 1000);
+
+        running = true;
     };
 
     /**
@@ -101,6 +117,7 @@ var PomoTimer = function (ses_duration_sec, timer_monitor, brk_duration_sec) {
     this.pauseTimer = function () {
         clearInterval(interval);
 
+        running = false;
     };
 
     /**
@@ -109,9 +126,12 @@ var PomoTimer = function (ses_duration_sec, timer_monitor, brk_duration_sec) {
      */
     this.resetTimer = function () {
         clearInterval(interval);
-        currentSec = sessionDurationSec;
 
+        // 重置番茄计时器为准备开启番茄会话，以重新开始番茄计时
+        currentSec = sessionDurationSec;
         runningState = "pomo";
+
+        running = false;
     };
 
     /**
@@ -130,14 +150,25 @@ var PomoTimer = function (ses_duration_sec, timer_monitor, brk_duration_sec) {
      */
     this.getState = function() {
         return runningState;
+    };
+
+    /**
+     * @method isRunning
+     * 告诉用户当前计时器是否在运行中。
+     * @return {boolean}
+     */
+    this.isRunning = function () {
+        return running;
     }
-
-
 };
 
 
-
-
+/**
+ * @function startPomodoro
+ * 启动番茄计时。
+ *  ■ 没有番茄计时会话时，启动一个新的番茄计时会话
+ *  ■ 若当前会话计时被暂停，则继续计时
+ */
 function startPomodoro(){
     if(currentTimer instanceof PomoTimer){
         currentTimer.startTimer();
@@ -149,6 +180,10 @@ function startPomodoro(){
     }
 }
 
+/**
+ * @function resetPomodoro
+ * 重置番茄计时器。
+ */
 function resetPomodoro() {
     if(currentTimer instanceof PomoTimer){
         timer_monitor.text(pomodoro_session_duration_state.text());
@@ -159,12 +194,20 @@ function resetPomodoro() {
 
 }
 
+/**
+ * @function pausePomodoro
+ * 暂停番茄计时器。
+ */
 function pausePomodoro() {
     if(currentTimer instanceof PomoTimer){
         currentTimer.pauseTimer();
     }
 }
 
+/**
+ * @function tuneTimeAndReset
+ * 调节番茄时间时使用，用于在调节为新的时间后自动停止当前番茄计时，以便按新时间重新计时。
+ */
 function tuneTimeAndReset() {
     resetPomodoro();
     timer_monitor.text(pomodoro_session_duration_state.text());
