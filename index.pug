@@ -4,30 +4,40 @@ meta(charset="utf8")
 link(href="css/pomodoro.css", rel="stylesheet")
 
 body
-    div#timer-settings
-        div#timer-settings__ses-duration
-            p.toggler-title 番茄钟时长
-            div.toggler-group
-                button#timer-settings__ses-duration__down -
-                p#timer-settings__ses-duration__state --
-                button#timer-settings__ses-duration__up +
+    div.center-container.absolute-center
+        div.pomo-timer-container.center-container.absolute-center
+            // 标题栏
+            div.title-bar
+                h2#pomo-title-main 简易番茄计时器 <span id="pomo-title-sub">By AnClark Ryu</span>
+
+
+            // 番茄计时器设置
+            div.timer-settings-bar
+                div#timer-settings__ses-duration
+                    p.toggler-title 番茄钟时长
+                    div.toggler-group
+                        button#timer-settings__ses-duration__down －
+                        p#timer-settings__ses-duration__state --
+                        button#timer-settings__ses-duration__up ＋
+                    div.clear
+
+                div.splitter &nbsp;
+
+
+                div#timer-settings__brk-duration
+                    p.toggler-title 休息时长
+                    div.toggler-group
+                        button#timer-settings__brk-duration__down －
+                        p#timer-settings__brk-duration__state --
+                        button#timer-settings__brk-duration__up ＋
+
             div.clear
 
-        div.splitter &nbsp;
 
-
-        div#timer-settings__brk-duration
-            p.toggler-title 休息时长
-            div.toggler-group
-                button#timer-settings__brk-duration__down -
-                p#timer-settings__brk-duration__state --
-                button#timer-settings__brk-duration__up +
-
-    div.clear
-
-    div#timer-state
-        p#timer-monitor &nbsp;
-        button#timer-start-pause 开始/暂停
+            // 当前番茄计时器状态
+            div.timer-state
+                p#timer-monitor &nbsp;
+                button(style="display: none")#timer-start-pause 开始/暂停
 
 
     script(src="lib/jquery-3.2.1.js")

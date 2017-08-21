@@ -1,7 +1,17 @@
+/** External Tools **/
+@import "shaw_centerize";
+
 /** Tools **/
 .clear
 {
   clear: both;
+}
+
+.horizontal-centerize (@width, @height)
+{
+  width: @width;
+  height: @height;
+  margin: 0 auto;
 }
 
 .splitter
@@ -10,18 +20,112 @@
   width: 50px;
 }
 
+.transition-effect
+{
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+}
+
+
+
+/** Global **/
+// Fonts
+body
+{
+  font-family: "华文细黑", "Microsoft YaHei UI", sans-serif;
+
+  .timer-state{
+    font-family: "Microsoft YaHei UI", sans-serif;
+  }
+}
+
+// Turn off outlines
+*{
+  outline: none;
+}
+
+
+
+/** Main Container **/
+.pomo-timer-container
+{
+  //height: 90%;
+}
+
+
+/** Toolbars **/
+.timer-settings-bar
+{
+  div{
+    float: left;
+  }
+
+  .horizontal-centerize(350px, 120px);
+  position: relative;
+}
+
+.title-bar
+{
+  h1, h2{
+    text-align: center;
+
+  }
+
+  #pomo-title-sub{
+    padding-left: 10px;
+    font-size: 20px;
+  }
+}
+
+
 /** Toggler **/
 .toggler-group
 {
   *{
     float: left;
   }
+
+  button{
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    .transition-effect;
+  }
+
+  p{
+    font-size: 25px;
+    text-align: center;
+    width: 60px;
+
+    margin: 0;
+    padding: 0 5px;
+  }
 }
 
-#timer-settings
+.toggler-title{
+  text-align: center;
+}
+
+
+
+/** Some Controls **/
+#timer-monitor
 {
-  div{
-    float: left;
-  }
+  font-size: 80px;
+  font-weight: bolder;
+  text-align: center;
+  cursor: pointer;
+
+  .horizontal-centerize(360px, 120px);
+
+  .transition-effect;
+}
+
+#timer-monitor:hover
+{
+  background-color: aquamarine;
 }
 
