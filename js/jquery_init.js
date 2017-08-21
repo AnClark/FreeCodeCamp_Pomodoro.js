@@ -55,4 +55,5 @@ $(document).ready(function () {
     };
 
     $("#timer-start-pause").click(btnStartPause);
+    $("#timer-monitor").click(btnStartPause);
 });
