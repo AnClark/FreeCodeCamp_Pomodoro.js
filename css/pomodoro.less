@@ -1,3 +1,11 @@
+/** Vars **/
+@default-font: "华文细黑", "Microsoft YaHei UI", sans-serif;
+@timer-state-font: "Microsoft YaHei UI", sans-serif;
+
+@bg-color: #269fe8;
+@timer-panel-color: #6bc67a;
+@shadow-color: #2c2c2c;
+
 /** External Tools **/
 @import "shaw_centerize";
 
@@ -32,10 +40,10 @@
 // Fonts
 body
 {
-  font-family: "华文细黑", "Microsoft YaHei UI", sans-serif;
+  font-family: @default-font;
 
   .timer-state{
-    font-family: "Microsoft YaHei UI", sans-serif;
+    font-family: @timer-state-font;
   }
 }
 
@@ -44,14 +52,33 @@ body
   outline: none;
 }
 
+// Background
+body
+{
+    background-color: @bg-color;
+}
+
 
 
 /** Main Container **/
 .pomo-timer-container
 {
-  //height: 90%;
+  height: 70%;
+  width: 660px;
+  border-radius: 20%;
+  background-color: @timer-panel-color;
+
+  padding-top: 50px;
+
+  box-shadow: 20px 25px 30px @shadow-color;
 }
 
+@media screen and (max-width: 1160px) {
+  .pomo-timer-container
+  {
+    width: 80%;
+  }
+}
 
 /** Toolbars **/
 .timer-settings-bar
@@ -127,5 +154,6 @@ body
 #timer-monitor:hover
 {
   background-color: aquamarine;
+  border-radius: 20%;
 }
 
