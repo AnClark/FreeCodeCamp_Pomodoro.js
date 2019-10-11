@@ -9,5 +9,5 @@ out
 gen
 
 # Files can be generated from source
-*.html
-*.css
+##*.html
+##*.css
