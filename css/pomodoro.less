@@ -6,6 +6,10 @@
 @timer-panel-color: #6bc67a;
 @shadow-color: #2c2c2c;
 
+@button-color: #ee6f6f;
+@button-hover-color: #d42c2c;
+@button-pressed-color: #aa0000;
+
 /** External Tools **/
 @import "shaw_centerize";
 
@@ -114,12 +118,24 @@ body
 
   button{
     font-size: 20px;
-    border-style: solid;
+    border-style: none;
     border-radius: 5px;
+    background-color: @button-color;
+
+    box-shadow: 2px 2px 3px @shadow-color;
 
     cursor: pointer;
 
     .transition-effect;
+  }
+
+  button:hover{
+    background-color: @button-hover-color;
+  }
+
+  button:active{
+    background-color: @button-pressed-color;
+    color: whitesmoke;
   }
 
   p{
@@ -146,6 +162,8 @@ body
   text-align: center;
   cursor: pointer;
 
+  border-radius: 20px;
+
   .horizontal-centerize(360px, 120px);
 
   .transition-effect;
@@ -153,7 +171,12 @@ body
 
 #timer-monitor:hover
 {
-  background-color: aquamarine;
-  border-radius: 20%;
+  background-color: @button-color;
+  border-radius: 60px;
 }
 
+#timer-monitor:active
+{
+  background-color: @button-pressed-color;
+  color: wheat;
+}

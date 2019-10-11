@@ -1,0 +1,145 @@
+/** Vars **/
+/** External Tools **/
+/**
+  CodePen - Absolute Centering
+  https://codepen.io/shshaw/full/gEiDt/
+ */
+.container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.center-container {
+  position: relative;
+}
+.absolute-center {
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.element-absolute-center {
+  overflow: auto;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  height: 80%;
+}
+/** Tools **/
+.clear {
+  clear: both;
+}
+.splitter {
+  position: relative;
+  width: 50px;
+}
+.transition-effect {
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+}
+/** Global **/
+body {
+  font-family: "华文细黑", "Microsoft YaHei UI", sans-serif;
+}
+body .timer-state {
+  font-family: "Microsoft YaHei UI", sans-serif;
+}
+* {
+  outline: none;
+}
+body {
+  background-color: #269fe8;
+}
+/** Main Container **/
+.pomo-timer-container {
+  height: 70%;
+  width: 660px;
+  border-radius: 20%;
+  background-color: #6bc67a;
+  padding-top: 50px;
+  box-shadow: 20px 25px 30px #2c2c2c;
+}
+@media screen and (max-width: 1160px) {
+  .pomo-timer-container {
+    width: 80%;
+  }
+}
+/** Toolbars **/
+.timer-settings-bar {
+  width: 350px;
+  height: 120px;
+  margin: 0 auto;
+  position: relative;
+}
+.timer-settings-bar div {
+  float: left;
+}
+.title-bar h1,
+.title-bar h2 {
+  text-align: center;
+}
+.title-bar #pomo-title-sub {
+  padding-left: 10px;
+  font-size: 20px;
+}
+/** Toggler **/
+.toggler-group * {
+  float: left;
+}
+.toggler-group button {
+  font-size: 20px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: #ee6f6f;
+  box-shadow: 2px 2px 3px #2c2c2c;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+}
+.toggler-group button:hover {
+  background-color: #d42c2c;
+}
+.toggler-group button:active {
+  background-color: #aa0000;
+  color: whitesmoke;
+}
+.toggler-group p {
+  font-size: 25px;
+  text-align: center;
+  width: 60px;
+  margin: 0;
+  padding: 0 5px;
+}
+.toggler-title {
+  text-align: center;
+}
+/** Some Controls **/
+#timer-monitor {
+  font-size: 80px;
+  font-weight: bolder;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 360px;
+  height: 120px;
+  margin: 0 auto;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+}
+#timer-monitor:hover {
+  background-color: #ee6f6f;
+  border-radius: 60px;
+}
+#timer-monitor:active {
+  background-color: #aa0000;
+  color: wheat;
+}
